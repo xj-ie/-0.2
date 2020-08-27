@@ -79,3 +79,28 @@
 | user_count |   int    |    是    | 统计个数  |
 |  datatime  | datatime |    是    | 统计 时间 |
 
+![image-20200827215021925](image\image-20200827215021925.png)
+
+## 日增用户接口定义
+
+### 1、接口分析
+
+​	**请求方式**：GET /meiduo_admin/statistical/day_increment/
+
+​	**请求参数**： 请求传递token(身份验证参数)
+
+​	**返回参数**：JSON
+
+{
+
+'date'：new_user_date,
+
+"count": day_create_count
+
+}
+
+|  返回参数  |   类型   | 是否必传 |       说明       |
+| :--------: | :------: | :------: | :--------------: |
+|    date    | datetime |    是    |     今日时间     |
+| user_count |   int    |    是    | 今日用户创建个数 |
+
