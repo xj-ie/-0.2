@@ -25,3 +25,16 @@ class UserCountView(APIView):
         context = {"count":user,
                    "date":now_date}
         return Response(context)
+
+class UserDayCountView(APIView):
+    """
+    权限指定
+     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiZW1haWwiOiIxQDEuY29tIiwiZXhwIjoxNTk4NjEyMzkwLCJ1c2VyX2lkIjoyfQ.34V2MoK4ELOwlWRCr49pjO6JoOccxT2VI68ipESJRj4"
+    """
+    parser_classes = [IsAdminUser]
+    def get(self, request):
+        now_date = date.today()
+        user = User.objects.filter(date_joined__gte=now_date)
+        context = {"count":user,
+                   "date":now_date}
+        return Response(context)
