@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
+from .view.stailstical import UserCountView
+
 
 urlpatterns = [
     url(r'^authorizations/$', obtain_jwt_token),
+    url(r'^statistical/total_count/$', UserCountView.as_view()),
 ]
