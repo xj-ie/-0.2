@@ -29,6 +29,6 @@ urlpatterns = [
     url('^', include('orders.urls')),
     url('^', include('payments.urls')),
     # url('^', include('payments.urls')),
-    url('^meiduo_admin/', include('meiduo_admin.urls')),
+    url('^meiduo_admin/', include('meiduo_main.urls')),
 
 ]

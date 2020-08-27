@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'carts.apps.CartsConfig',
     'orders.apps.OrdersConfig',
     'payments.apps.PaymentsConfig',
-    'meiduo_main',
+    'meiduo_main.apps.MeiduoMainConfig',
     'corsheaders',
 
     # 'haystack',
@@ -339,4 +339,6 @@ REST_FRAMEWORK = {
 
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'meiduo_main.utils.jwt_response_payload_handler',
+
 }

@@ -1,0 +1,666 @@
+.
+├── image
+│   └── image-20200826085703466.png
+├── meiduo_mall
+│   └── meiduo_mall
+│       ├── celery_tasks
+│       │   ├── config.py
+│       │   ├── email_active
+│       │   │   ├── __init__.py
+│       │   │   ├── __pycache__
+│       │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   ├── tasks.cpython-35.pyc
+│       │   │   │   └── tasks.cpython-36.pyc
+│       │   │   └── tasks.py
+│       │   ├── __init__.py
+│       │   ├── main.py
+│       │   ├── __pycache__
+│       │   │   ├── config.cpython-35.pyc
+│       │   │   ├── __init__.cpython-35.pyc
+│       │   │   ├── __init__.cpython-36.pyc
+│       │   │   ├── main.cpython-35.pyc
+│       │   │   └── main.cpython-36.pyc
+│       │   └── sms
+│       │       ├── constants.py
+│       │       ├── __init__.py
+│       │       ├── __pycache__
+│       │       │   ├── constants.cpython-35.pyc
+│       │       │   ├── constants.cpython-36.pyc
+│       │       │   ├── __init__.cpython-35.pyc
+│       │       │   ├── __init__.cpython-36.pyc
+│       │       │   ├── tasks.cpython-35.pyc
+│       │       │   └── tasks.cpython-36.pyc
+│       │       └── tasks.py
+│       ├── docs
+│       │   ├── dump.sql
+│       │   ├── nginx.conf
+│       │   └── requeriments.txt
+│       ├── logs
+│       │   ├── crontab.log
+│       │   └── meiduo.log
+│       ├── manage.py
+│       ├── meiduo_mall
+│       │   ├── apps
+│       │   │   ├── areas
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── constants.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── 0001_initial.py
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       ├── 0001_initial.cpython-35.pyc
+│       │   │   │   │       ├── 0001_initial.cpython-36.pyc
+│       │   │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │   │       └── __init__.cpython-36.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── admin.cpython-36.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-36.pyc
+│       │   │   │   │   ├── constants.cpython-35.pyc
+│       │   │   │   │   ├── constants.cpython-36.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   │   ├── urls.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-36.pyc
+│       │   │   │   │   ├── views.cpython-35.pyc
+│       │   │   │   │   └── views.cpython-36.pyc
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   └── views.py
+│       │   │   ├── carts
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── constants.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │   │       └── __init__.cpython-36.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── admin.cpython-36.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-36.pyc
+│       │   │   │   │   ├── constants.cpython-35.pyc
+│       │   │   │   │   ├── constants.cpython-36.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   │   ├── urls.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-36.pyc
+│       │   │   │   │   ├── utils.cpython-35.pyc
+│       │   │   │   │   ├── utils.cpython-36.pyc
+│       │   │   │   │   ├── views.cpython-35.pyc
+│       │   │   │   │   └── views.cpython-36.pyc
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   ├── utils.py
+│       │   │   │   └── views.py
+│       │   │   ├── contents
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── crons.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── 0001_initial.py
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       ├── 0001_initial.cpython-35.pyc
+│       │   │   │   │       ├── 0001_initial.cpython-36.pyc
+│       │   │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │   │       └── __init__.cpython-36.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── admin.cpython-36.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-36.pyc
+│       │   │   │   │   ├── crons.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   │   ├── urls.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-36.pyc
+│       │   │   │   │   ├── views.cpython-35.pyc
+│       │   │   │   │   └── views.cpython-36.pyc
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   └── views.py
+│       │   │   ├── goods
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── constants.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── 0001_initial.py
+│       │   │   │   │   ├── 0002_auto_20190327_0415.py
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       ├── 0001_initial.cpython-35.pyc
+│       │   │   │   │       ├── 0001_initial.cpython-36.pyc
+│       │   │   │   │       ├── 0002_auto_20190327_0415.cpython-35.pyc
+│       │   │   │   │       ├── 0002_auto_20190327_0415.cpython-36.pyc
+│       │   │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │   │       └── __init__.cpython-36.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── admin.cpython-36.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-36.pyc
+│       │   │   │   │   ├── constants.cpython-35.pyc
+│       │   │   │   │   ├── constants.cpython-36.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   │   ├── search_indexes.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-36.pyc
+│       │   │   │   │   ├── views.cpython-35.pyc
+│       │   │   │   │   └── views.cpython-36.pyc
+│       │   │   │   ├── search_indexes.py
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   └── views.py
+│       │   │   ├── __init__.py
+│       │   │   ├── meiduo_main
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       └── __init__.cpython-35.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   └── models.cpython-35.pyc
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   ├── utils.py
+│       │   │   │   └── view
+│       │   │   │       ├── __init__.py
+│       │   │   │       └── views.py
+│       │   │   ├── oauth
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── constants.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── 0001_initial.py
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       ├── 0001_initial.cpython-35.pyc
+│       │   │   │   │       ├── 0001_initial.cpython-36.pyc
+│       │   │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │   │       └── __init__.cpython-36.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── admin.cpython-36.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-36.pyc
+│       │   │   │   │   ├── constants.cpython-35.pyc
+│       │   │   │   │   ├── constants.cpython-36.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   │   ├── urls.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-36.pyc
+│       │   │   │   │   ├── views.cpython-35.pyc
+│       │   │   │   │   └── views.cpython-36.pyc
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   └── views.py
+│       │   │   ├── orders
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── 0001_initial.py
+│       │   │   │   │   ├── 0002_auto_20190403_0121.py
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       ├── 0001_initial.cpython-35.pyc
+│       │   │   │   │       ├── 0001_initial.cpython-36.pyc
+│       │   │   │   │       ├── 0002_auto_20190403_0121.cpython-35.pyc
+│       │   │   │   │       ├── 0002_auto_20190403_0121.cpython-36.pyc
+│       │   │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │   │       └── __init__.cpython-36.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── admin.cpython-36.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-36.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   │   ├── urls.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-36.pyc
+│       │   │   │   │   ├── views.cpython-35.pyc
+│       │   │   │   │   └── views.cpython-36.pyc
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   └── views.py
+│       │   │   ├── payments
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── 0001_initial.py
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       ├── 0001_initial.cpython-35.pyc
+│       │   │   │   │       ├── 0001_initial.cpython-36.pyc
+│       │   │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │   │       └── __init__.cpython-36.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── admin.cpython-36.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-36.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   │   ├── urls.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-36.pyc
+│       │   │   │   │   ├── views.cpython-35.pyc
+│       │   │   │   │   └── views.cpython-36.pyc
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   └── views.py
+│       │   │   ├── __pycache__
+│       │   │   │   └── __init__.cpython-35.pyc
+│       │   │   ├── users
+│       │   │   │   ├── admin.py
+│       │   │   │   ├── apps.py
+│       │   │   │   ├── constants.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── migrations
+│       │   │   │   │   ├── 0001_initial.py
+│       │   │   │   │   ├── 0002_user_email_active.py
+│       │   │   │   │   ├── 0003_auto_20190322_0204.py
+│       │   │   │   │   ├── 0004_address_title.py
+│       │   │   │   │   ├── 0005_address_is_delete.py
+│       │   │   │   │   ├── __init__.py
+│       │   │   │   │   └── __pycache__
+│       │   │   │   │       ├── 0001_initial.cpython-35.pyc
+│       │   │   │   │       ├── 0001_initial.cpython-36.pyc
+│       │   │   │   │       ├── 0002_user_email_active.cpython-35.pyc
+│       │   │   │   │       ├── 0002_user_email_active.cpython-36.pyc
+│       │   │   │   │       ├── 0003_auto_20190322_0204.cpython-35.pyc
+│       │   │   │   │       ├── 0003_auto_20190322_0204.cpython-36.pyc
+│       │   │   │   │       ├── 0004_address_title.cpython-35.pyc
+│       │   │   │   │       ├── 0004_address_title.cpython-36.pyc
+│       │   │   │   │       ├── 0005_address_is_delete.cpython-35.pyc
+│       │   │   │   │       ├── 0005_address_is_delete.cpython-36.pyc
+│       │   │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │   │       └── __init__.cpython-36.pyc
+│       │   │   │   ├── models.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── admin.cpython-35.pyc
+│       │   │   │   │   ├── admin.cpython-36.pyc
+│       │   │   │   │   ├── apps.cpython-35.pyc
+│       │   │   │   │   ├── apps.cpython-36.pyc
+│       │   │   │   │   ├── constants.cpython-35.pyc
+│       │   │   │   │   ├── constants.cpython-36.pyc
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   │   ├── urls.cpython-35.pyc
+│       │   │   │   │   ├── urls.cpython-36.pyc
+│       │   │   │   │   ├── views.cpython-35.pyc
+│       │   │   │   │   └── views.cpython-36.pyc
+│       │   │   │   ├── tests.py
+│       │   │   │   ├── urls.py
+│       │   │   │   └── views.py
+│       │   │   └── verifycations
+│       │   │       ├── admin.py
+│       │   │       ├── apps.py
+│       │   │       ├── constants.py
+│       │   │       ├── __init__.py
+│       │   │       ├── migrations
+│       │   │       │   ├── __init__.py
+│       │   │       │   └── __pycache__
+│       │   │       │       ├── __init__.cpython-35.pyc
+│       │   │       │       └── __init__.cpython-36.pyc
+│       │   │       ├── models.py
+│       │   │       ├── __pycache__
+│       │   │       │   ├── admin.cpython-35.pyc
+│       │   │       │   ├── admin.cpython-36.pyc
+│       │   │       │   ├── apps.cpython-35.pyc
+│       │   │       │   ├── apps.cpython-36.pyc
+│       │   │       │   ├── constants.cpython-35.pyc
+│       │   │       │   ├── constants.cpython-36.pyc
+│       │   │       │   ├── __init__.cpython-35.pyc
+│       │   │       │   ├── __init__.cpython-36.pyc
+│       │   │       │   ├── models.cpython-35.pyc
+│       │   │       │   ├── models.cpython-36.pyc
+│       │   │       │   ├── urls.cpython-35.pyc
+│       │   │       │   ├── urls.cpython-36.pyc
+│       │   │       │   ├── views.cpython-35.pyc
+│       │   │       │   └── views.cpython-36.pyc
+│       │   │       ├── tests.py
+│       │   │       ├── urls.py
+│       │   │       └── views.py
+│       │   ├── demo
+│       │   │   ├── class_demo.py
+│       │   │   └── __init__.py
+│       │   ├── __init__.py
+│       │   ├── libs
+│       │   │   ├── alipay
+│       │   │   │   ├── alipay_public_key.pem
+│       │   │   │   ├── app_private_key.pem
+│       │   │   │   └── __init__.py
+│       │   │   ├── captcha
+│       │   │   │   ├── captcha.py
+│       │   │   │   ├── fonts
+│       │   │   │   │   ├── actionj.ttf
+│       │   │   │   │   ├── Arial.ttf
+│       │   │   │   │   └── Georgia.ttf
+│       │   │   │   ├── __init__.py
+│       │   │   │   └── __pycache__
+│       │   │   │       ├── captcha.cpython-35.pyc
+│       │   │   │       ├── captcha.cpython-36.pyc
+│       │   │   │       ├── __init__.cpython-35.pyc
+│       │   │   │       └── __init__.cpython-36.pyc
+│       │   │   ├── __init__.py
+│       │   │   ├── __pycache__
+│       │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   └── __init__.cpython-36.pyc
+│       │   │   └── yuntongxun
+│       │   │       ├── CCPRestSDK.py
+│       │   │       ├── __init__.py
+│       │   │       ├── __pycache__
+│       │   │       │   ├── CCPRestSDK.cpython-35.pyc
+│       │   │       │   ├── CCPRestSDK.cpython-36.pyc
+│       │   │       │   ├── __init__.cpython-35.pyc
+│       │   │       │   ├── __init__.cpython-36.pyc
+│       │   │       │   ├── sms.cpython-35.pyc
+│       │   │       │   ├── sms.cpython-36.pyc
+│       │   │       │   ├── xmltojson.cpython-35.pyc
+│       │   │       │   └── xmltojson.cpython-36.pyc
+│       │   │       ├── sms.py
+│       │   │       └── xmltojson.py
+│       │   ├── __pycache__
+│       │   │   ├── __init__.cpython-35.pyc
+│       │   │   ├── __init__.cpython-36.pyc
+│       │   │   ├── urls.cpython-35.pyc
+│       │   │   ├── urls.cpython-36.pyc
+│       │   │   ├── wsgi.cpython-35.pyc
+│       │   │   └── wsgi.cpython-36.pyc
+│       │   ├── settings
+│       │   │   ├── dev.py
+│       │   │   ├── __init__.py
+│       │   │   ├── prod.py
+│       │   │   └── __pycache__
+│       │   │       ├── dev.cpython-35.pyc
+│       │   │       ├── dev.cpython-36.pyc
+│       │   │       ├── __init__.cpython-35.pyc
+│       │   │       ├── __init__.cpython-36.pyc
+│       │   │       └── prod.cpython-35.pyc
+│       │   ├── static
+│       │   │   ├── admin
+│       │   │   │   ├── css
+│       │   │   │   │   ├── base.css
+│       │   │   │   │   ├── changelists.css
+│       │   │   │   │   ├── dashboard.css
+│       │   │   │   │   ├── fonts.css
+│       │   │   │   │   ├── forms.css
+│       │   │   │   │   ├── login.css
+│       │   │   │   │   ├── rtl.css
+│       │   │   │   │   └── widgets.css
+│       │   │   │   ├── fonts
+│       │   │   │   │   ├── LICENSE.txt
+│       │   │   │   │   ├── README.txt
+│       │   │   │   │   ├── Roboto-Bold-webfont.woff
+│       │   │   │   │   ├── Roboto-Light-webfont.woff
+│       │   │   │   │   └── Roboto-Regular-webfont.woff
+│       │   │   │   ├── img
+│       │   │   │   │   ├── calendar-icons.svg
+│       │   │   │   │   ├── gis
+│       │   │   │   │   │   ├── move_vertex_off.svg
+│       │   │   │   │   │   └── move_vertex_on.svg
+│       │   │   │   │   ├── icon-addlink.svg
+│       │   │   │   │   ├── icon-alert.svg
+│       │   │   │   │   ├── icon-calendar.svg
+│       │   │   │   │   ├── icon-changelink.svg
+│       │   │   │   │   ├── icon-clock.svg
+│       │   │   │   │   ├── icon-deletelink.svg
+│       │   │   │   │   ├── icon-no.svg
+│       │   │   │   │   ├── icon-unknown-alt.svg
+│       │   │   │   │   ├── icon-unknown.svg
+│       │   │   │   │   ├── icon-yes.svg
+│       │   │   │   │   ├── inline-delete.svg
+│       │   │   │   │   ├── LICENSE
+│       │   │   │   │   ├── README.txt
+│       │   │   │   │   ├── search.svg
+│       │   │   │   │   ├── selector-icons.svg
+│       │   │   │   │   ├── sorting-icons.svg
+│       │   │   │   │   ├── tooltag-add.svg
+│       │   │   │   │   └── tooltag-arrowright.svg
+│       │   │   │   └── js
+│       │   │   │       ├── actions.js
+│       │   │   │       ├── actions.min.js
+│       │   │   │       ├── admin
+│       │   │   │       │   ├── DateTimeShortcuts.js
+│       │   │   │       │   └── RelatedObjectLookups.js
+│       │   │   │       ├── calendar.js
+│       │   │   │       ├── cancel.js
+│       │   │   │       ├── change_form.js
+│       │   │   │       ├── collapse.js
+│       │   │   │       ├── collapse.min.js
+│       │   │   │       ├── core.js
+│       │   │   │       ├── inlines.js
+│       │   │   │       ├── inlines.min.js
+│       │   │   │       ├── jquery.init.js
+│       │   │   │       ├── popup_response.js
+│       │   │   │       ├── prepopulate_init.js
+│       │   │   │       ├── prepopulate.js
+│       │   │   │       ├── prepopulate.min.js
+│       │   │   │       ├── SelectBox.js
+│       │   │   │       ├── SelectFilter2.js
+│       │   │   │       ├── timeparse.js
+│       │   │   │       ├── urlify.js
+│       │   │   │       └── vendor
+│       │   │   │           ├── jquery
+│       │   │   │           │   ├── jquery.js
+│       │   │   │           │   ├── jquery.min.js
+│       │   │   │           │   └── LICENSE-JQUERY.txt
+│       │   │   │           └── xregexp
+│       │   │   │               ├── LICENSE-XREGEXP.txt
+│       │   │   │               ├── xregexp.js
+│       │   │   │               └── xregexp.min.js
+│       │   │   ├── base.html
+│       │   │   ├── css
+│       │   │   │   ├── jquery.pagination.css
+│       │   │   │   ├── main.css
+│       │   │   │   └── reset.css
+│       │   │   ├── detail
+│       │   │   │   ├── 10.html
+│       │   │   │   ├── 11.html
+│       │   │   │   ├── 12.html
+│       │   │   │   ├── 13.html
+│       │   │   │   ├── 14.html
+│       │   │   │   ├── 15.html
+│       │   │   │   ├── 16.html
+│       │   │   │   ├── 1.html
+│       │   │   │   ├── 2.html
+│       │   │   │   ├── 3.html
+│       │   │   │   ├── 4.html
+│       │   │   │   ├── 5.html
+│       │   │   │   ├── 6.html
+│       │   │   │   ├── 7.html
+│       │   │   │   ├── 8.html
+│       │   │   │   └── 9.html
+│       │   │   ├── favicon.ico
+│       │   │   ├── images
+│       │   │   │   ├── adv01.jpg
+│       │   │   │   ├── adv02.jpg
+│       │   │   │   ├── arrow.png
+│       │   │   │   ├── banner01.jpg
+│       │   │   │   ├── banner02.jpg
+│       │   │   │   ├── banner03.jpg
+│       │   │   │   ├── bar_code.jpg
+│       │   │   │   ├── cat.jpg
+│       │   │   │   ├── clock.jpeg
+│       │   │   │   ├── clock.jpg
+│       │   │   │   ├── down.png
+│       │   │   │   ├── edit.png
+│       │   │   │   ├── find-password.png
+│       │   │   │   ├── goods
+│       │   │   │   │   ├── goods001.jpg
+│       │   │   │   │   ├── goods002.jpg
+│       │   │   │   │   ├── goods003.jpg
+│       │   │   │   │   ├── goods004.jpg
+│       │   │   │   │   ├── goods005.jpg
+│       │   │   │   │   ├── goods006.jpg
+│       │   │   │   │   ├── goods007.jpg
+│       │   │   │   │   ├── goods008.jpg
+│       │   │   │   │   └── goods009.jpg
+│       │   │   │   ├── goods_450.jpg
+│       │   │   │   ├── icons02.png
+│       │   │   │   ├── icons.png
+│       │   │   │   ├── interval_line.png
+│       │   │   │   ├── left_bg.jpg
+│       │   │   │   ├── login_banner.png
+│       │   │   │   ├── logo02.png
+│       │   │   │   ├── logo.png
+│       │   │   │   ├── missing.png
+│       │   │   │   ├── pay_icons.png
+│       │   │   │   ├── pic_code.jpg
+│       │   │   │   ├── QQ-weixin.png
+│       │   │   │   ├── register_banner.png
+│       │   │   │   ├── selected.png
+│       │   │   │   ├── shine.png
+│       │   │   │   ├── shop_cart.png
+│       │   │   │   ├── slide01.jpg
+│       │   │   │   ├── slide02.jpg
+│       │   │   │   ├── slide03.jpg
+│       │   │   │   ├── slide04.jpg
+│       │   │   │   ├── stars.png
+│       │   │   │   ├── success.png
+│       │   │   │   └── time_count_bg.png
+│       │   │   ├── index.html
+│       │   │   └── js
+│       │   │       ├── axios-0.18.0.min.js
+│       │   │       ├── base.js
+│       │   │       ├── cart.js
+│       │   │       ├── common.js
+│       │   │       ├── detail.js
+│       │   │       ├── goods_judge.js
+│       │   │       ├── host.js
+│       │   │       ├── index.js
+│       │   │       ├── jquery-1.12.4.min.js
+│       │   │       ├── jquery.pagination.min.js
+│       │   │       ├── list.js
+│       │   │       ├── login.js
+│       │   │       ├── oauth_callback.js
+│       │   │       ├── order_success.js
+│       │   │       ├── place_order.js
+│       │   │       ├── register.js
+│       │   │       ├── slide.js
+│       │   │       ├── user_center_info.js
+│       │   │       ├── user_center_order.js
+│       │   │       ├── user_center_pass.js
+│       │   │       ├── user_center_site.js
+│       │   │       └── vue-2.5.16.js
+│       │   ├── templates
+│       │   │   ├── 404.html
+│       │   │   ├── cart.html
+│       │   │   ├── detail.html
+│       │   │   ├── goods_judge.html
+│       │   │   ├── index.html
+│       │   │   ├── list.html
+│       │   │   ├── login.html
+│       │   │   ├── oauth_callback.html
+│       │   │   ├── order_success.html
+│       │   │   ├── pay_success.html
+│       │   │   ├── place_order.html
+│       │   │   ├── register.html
+│       │   │   ├── search
+│       │   │   │   ├── indexes
+│       │   │   │   │   └── goods
+│       │   │   │   │       └── sku_text.txt
+│       │   │   │   └── search.html
+│       │   │   ├── user_center_info.html
+│       │   │   ├── user_center_order.html
+│       │   │   ├── user_center_pass.html
+│       │   │   └── user_center_site.html
+│       │   ├── urls.py
+│       │   ├── utils
+│       │   │   ├── authenticate.py
+│       │   │   ├── breadcrumb.py
+│       │   │   ├── categories.py
+│       │   │   ├── db_router.py
+│       │   │   ├── fdfs
+│       │   │   │   ├── client.conf
+│       │   │   │   ├── demo.py
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── __pycache__
+│       │   │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   │   ├── storage.cpython-35.pyc
+│       │   │   │   │   └── storage.cpython-36.pyc
+│       │   │   │   └── storage.py
+│       │   │   ├── __init__.py
+│       │   │   ├── jinja2_env.py
+│       │   │   ├── login.py
+│       │   │   ├── meiduo_json.py
+│       │   │   ├── meiduo_signature.py
+│       │   │   ├── models.py
+│       │   │   ├── __pycache__
+│       │   │   │   ├── authenticate.cpython-35.pyc
+│       │   │   │   ├── authenticate.cpython-36.pyc
+│       │   │   │   ├── breadcrumb.cpython-35.pyc
+│       │   │   │   ├── breadcrumb.cpython-36.pyc
+│       │   │   │   ├── categories.cpython-35.pyc
+│       │   │   │   ├── categories.cpython-36.pyc
+│       │   │   │   ├── db_router.cpython-35.pyc
+│       │   │   │   ├── __init__.cpython-35.pyc
+│       │   │   │   ├── __init__.cpython-36.pyc
+│       │   │   │   ├── jinja2_env.cpython-35.pyc
+│       │   │   │   ├── jinja2_env.cpython-36.pyc
+│       │   │   │   ├── login.cpython-35.pyc
+│       │   │   │   ├── login.cpython-36.pyc
+│       │   │   │   ├── meiduo_json.cpython-35.pyc
+│       │   │   │   ├── meiduo_json.cpython-36.pyc
+│       │   │   │   ├── meiduo_signature.cpython-35.pyc
+│       │   │   │   ├── meiduo_signature.cpython-36.pyc
+│       │   │   │   ├── models.cpython-35.pyc
+│       │   │   │   ├── models.cpython-36.pyc
+│       │   │   │   ├── response_code.cpython-35.pyc
+│       │   │   │   └── response_code.cpython-36.pyc
+│       │   │   └── response_code.py
+│       │   └── wsgi.py
+│       ├── __pycache__
+│       │   └── manage.cpython-35.pyc
+│       ├── scripts
+│       │   ├── areas.sql
+│       │   ├── detail.py
+│       │   └── goods_data.sql
+│       └── uwsgi.ini
+├── path_url.txt
+└── README.md
+
+93 directories, 570 files
