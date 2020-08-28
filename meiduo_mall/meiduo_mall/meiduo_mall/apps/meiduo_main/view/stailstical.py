@@ -34,7 +34,19 @@ class UserDayCountView(APIView):
     parser_classes = [IsAdminUser]
     def get(self, request):
         now_date = date.today()
-        user = User.objects.filter(date_joined__gte=now_date)
+        user = User.objects.filter(date_joined__gte=now_date).count()
         context = {"count":user,
                    "date":now_date}
+        return Response(context)
+
+class UserDayActivateCountView(APIView):
+    parser_classes = [IsAdminUser]
+    def get(self, request):
+        new_date = date.today()
+        user_count = User.objects.filter(last_login__gte=new_date).count()
+        context = {
+            'count':user_count,
+            "date":new_date
+
+        }
         return Response(context)
