@@ -292,3 +292,56 @@
 ​	**3、多个用户查询**
 
 ​		未有keywork传入，直接查询所以数据 ，并构建JSON返回结果。
+
+### 新增用户接口分析
+
+![image-20200829072023614](image/image-20200829072023614.png)
+
+**请求方式**：POST  /meiduo_admin/users/
+
+**请求参数**：username，password，email, mobile, token
+
+|   参数   | 类型 | 是否必传 |     携带部位      |   说明   |
+| :------: | :--: | :------: | :---------------: | :------: |
+| username | str  |    是    |  请求体（body）   |  用户名  |
+| password | str  |    是    |  请求体（body）   |  密码em  |
+|  email   | str  |    是    |  请求体（body）   |   邮箱   |
+|  mobile  | str  |    是    |  请求体（body）   |  手机号  |
+|  token   | str  |    是    | 请求头（headres） | 身份验证 |
+
+**返回数据**：JSON
+
+```json
+{
+id:"userid"
+username:"username",
+email:"email",
+mobile:"mobile",
+}
+```
+
+| 返回参数 | 类型 | 是否必需 |  说明  |
+| :------: | :--: | :------: | :----: |
+| username | str  |    是    | 用户名 |
+|    id    | int  |    是    | 用户id |
+|  email   | str  |    是    |  邮箱  |
+|  mobile  | str  |    是    | 手机号 |
+
+### 业务分析
+
+​	**1、获取前端数据 **
+
+​	**2、验证数据**
+
+​		定义序列化器来验证
+
+​	**3、保存数据**
+
+​		通过序列器来保存
+
+​	**4、返回数据** 
+
+​		通过序列化器返回
+
+
+
