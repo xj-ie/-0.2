@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
-from .view.stailstical import UserCountView,UserDayCountView, UserDayActivateCountView
+from .view.stailstical import UserCountView,UserDayCountView, UserDayActivateCountView, UserDayOrderCountView
 
 
 urlpatterns = [
     url(r'^authorizations/$', obtain_jwt_token),
     url(r'^statistical/total_count/$', UserCountView.as_view()),
     url(r'^statistical/day_increment/$', UserDayCountView.as_view()),
-    url(r'^statistical/day_activate/$', UserDayActivateCountView.as_view())
+    url(r'^statistical/day_activate/$', UserDayActivateCountView.as_view()),
+    url(r'^statistical/day_order/$', UserDayOrderCountView.as_view())
 ]

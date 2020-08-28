@@ -50,3 +50,17 @@ class UserDayActivateCountView(APIView):
 
         }
         return Response(context)
+
+class UserDayOrderCountView(APIView):
+    parser_classes = [IsAdminUser]
+    def get(self, request):
+        new_date = date.today()
+        user_count = len(set(User.objects.filter(orders__create_time__gte=new_date)))
+        # user_count=User.objects.filter(orders__create_time__gte=new_date).count()
+
+                                               # orders__create_time__gte = now_date
+        context = {
+            'count':user_count,
+            'date':new_date
+        }
+        return Response(context)
