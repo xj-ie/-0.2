@@ -228,3 +228,67 @@
 | category | str  |    是    |  分类名  |
 |  count   | int  |    是    | 日访问量 |
 
+## 用户管理
+
+### ![image-20200828170020363](image/image-20200828170020363.png)
+
+### 用户查询分析
+
+​	**请求方式**：GET /meiduo_admin/users/?keyword=<搜索内容>&page=<页码>&pagesize=<页容量>
+
+​	**请求参数**：JWF token，Keywork，page，pagesize
+
+|   参数   | 类型 | 是否必传 | 携带部位 |    说明    |
+| :------: | :--: | :------: | :------: | :--------: |
+|  token   | srt  |    是    |  请求头  |  身份验证  |
+| Keywork  | srt  |    否    |  请求行  |   关键词   |
+|   page   | int  |    否    |  请求行  |   第几页   |
+| pagesize | int  |    否    |  请求和  | 每页最大数 |
+
+​	**返回参数**：JOSN
+
+```JSON
+{
+    "count": username.count().
+    "lines":[
+        {
+        "id":user.id,
+        "username":user.name,
+        "phone":user.phone,
+        "email":user.email,
+        },
+        {
+        "id":user.id,
+        "username":user.name,
+        "phone":user.phone,
+        "email":user.email,
+        }
+        .....
+    ],
+	"page":page,
+	"pages":page.count(),
+	"pagesize":pagesize,
+}
+```
+
+| 返回参数 | 类型 | 是否必需 |    说明    |
+| :------: | :--: | :------: | :--------: |
+|  count   | int  |    是    | 用户总个数 |
+|  lines   | list |    是    |  用户说明  |
+|   page   | int  |    是    |    行页    |
+|  pages   | int  |    是    |  最大行页  |
+| pagesize | int  |    是    |   页容量   |
+
+### 业务分析
+
+​	**1**、**获取传入数据**
+
+​		通过keywork是否存在，判断单一用户查询还是多个用户查询。
+
+​	**2、单一用户查询**
+
+​		通过keywork来查询数据，并构建JSON返回结果。
+
+​	**3、多个用户查询**
+
+​		未有keywork传入，直接查询所以数据 ，并构建JSON返回结果。
