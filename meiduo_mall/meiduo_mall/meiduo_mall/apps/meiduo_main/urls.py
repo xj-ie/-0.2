@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
 from .view.stailstical import UserCountView,UserDayCountView, UserDayActivateCountView, UserDayOrderCountView,UserMonthCountView,GoodsDayView
-
+from .view import users
 
 urlpatterns = [
     url(r'^authorizations/$', obtain_jwt_token),
@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^statistical/day_activate/$', UserDayActivateCountView.as_view()),
     url(r'^statistical/day_order/$', UserDayOrderCountView.as_view()),
     url(r'^statistical/month/$', UserMonthCountView.as_view()),
-    url(r'statistical/goods_day_views/$',GoodsDayView.as_view())
+    url(r'^statistical/goods_day_views/$',GoodsDayView.as_view()),
+    url(r'^User/showuser/$',users.UserView.as_view())
 ]
