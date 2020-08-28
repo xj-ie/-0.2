@@ -1,5 +1,5 @@
 # import time
-from datetime import date
+from datetime import date,timedelta
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser
 from rest_framework.views import APIView
@@ -63,4 +63,18 @@ class UserDayOrderCountView(APIView):
             'count':user_count,
             'date':new_date
         }
+        return Response(context)
+class UserMonthCountView(APIView):
+    # 指定管理员权限
+    parser_classes = [IsAdminUser]
+
+    def get(self, request):
+        new_date = date.today()
+        new_ee_date = new_date - timedelta(30)
+        new_date_i = []
+        for i in range(30):
+            new_ee_date += timedelta(1)
+            new_date_i.append(new_ee_date)
+        context = [{'count':User.objects.filter(date_joined__gte=dates,date_joined__lt=dates+timedelta(1)).count(),
+            'date':dates} for dates in new_date_i]
         return Response(context)
