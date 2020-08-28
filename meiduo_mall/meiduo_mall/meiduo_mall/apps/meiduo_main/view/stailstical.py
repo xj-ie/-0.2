@@ -6,6 +6,10 @@ from rest_framework.views import APIView
 
 from users.models import User
 
+from goods.models import GoodsVisitCount
+
+from meiduo_main.utils import GoodsDaySerializer
+
 
 class UserCountView(APIView):
     """
@@ -78,3 +82,12 @@ class UserMonthCountView(APIView):
         context = [{'count':User.objects.filter(date_joined__gte=dates,date_joined__lt=dates+timedelta(1)).count(),
             'date':dates} for dates in new_date_i]
         return Response(context)
+
+class GoodsDayView(APIView):
+    parser_classes = [IsAdminUser]
+    def get(self, request):
+        new_date = date.today()
+        goods = GoodsVisitCount.objects.filter(date__gte=new_date)
+        res = GoodsDaySerializer(goods, many=True)
+
+        return Response(res.data)
