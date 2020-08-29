@@ -349,6 +349,36 @@ mobile:"mobile",
 
 #### 	增加商品接口分析
 
+![image-20200829173207299](image/image-20200829173207299.png)
+
+**请求方式：**POST /meiduo_admin/goods/specs/
+
+**请求参数**： name、spu_id、jwt token
+
+|  参数  | 类型 | 是否必传 |     携带部位      |   说明    |
+| :----: | :--: | :------: | :---------------: | :-------: |
+|  name  | str  |    是    |  body（请求体）   |  规范名   |
+| spu_id | int  |    是    |  body（请求体）   | SPU商品id |
+| token  | str  |    是    | headres（请求头） | 身份验证  |
+
+**返回参数**：
+
+```json
+{
+        "id": "规格id",
+        "name": "规格名称",
+        "spu": "SPU商品名称",
+        "spu_id": "SPU商品id"
+    }
+```
+
+| 参数   | 类型 | 是否必须 | 说明        |
+| ------ | ---- | -------- | ----------- |
+| id     | Int  | 是       | 规格id      |
+| name   | Str  | 是       | 规格名称    |
+| spu    | str  | 是       | SPU商品名称 |
+| spu_id | Int  | 是       | spu商品id   |
+
 #### 	修改商品接口分析
 
 #### 	修改商品接口分析 
