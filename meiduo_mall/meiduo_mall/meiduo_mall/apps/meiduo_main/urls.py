@@ -27,7 +27,8 @@ urlpatterns = [
     url(r'^statistical/day_order/$', UserDayOrderCountView.as_view()),
     url(r'^statistical/month/$', UserMonthCountView.as_view()),
     url(r'^statistical/goods_day_views/$',GoodsDayView.as_view()),
-    url(r'^User/showuser/$',users.UserView.as_view())
+    url(r'^User/showuser/$',users.UserView.as_view()),
+    url(r'^goods/simplie/$',skuView.SkuViewSet.as_view({"get":"simplie"}))
 ]
 
 routes = DefaultRouter()
