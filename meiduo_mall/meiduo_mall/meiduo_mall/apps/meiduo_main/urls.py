@@ -16,7 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
 from .view.stailstical import UserCountView,UserDayCountView, UserDayActivateCountView, UserDayOrderCountView,UserMonthCountView,GoodsDayView
-from .view import users
+from .view import users,skuView
+from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
     url(r'^authorizations/$', obtain_jwt_token),
@@ -28,3 +29,8 @@ urlpatterns = [
     url(r'^statistical/goods_day_views/$',GoodsDayView.as_view()),
     url(r'^User/showuser/$',users.UserView.as_view())
 ]
+
+routes = DefaultRouter()
+routes.register("goods/specs",skuView.SkuViewSet,base_name='skuview')
+print(routes.urls)
+urlpatterns += routes.urls
