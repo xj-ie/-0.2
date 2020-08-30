@@ -165,6 +165,10 @@
 |  count   | int  |    是    | 下单用户的个数 |
 |   date   | date |    是    |  当天日期下单  |
 
+------
+
+
+
 ## 月增用户接口
 
 ![image-20200828103012608](image/image-20200828103012608.png)
@@ -541,11 +545,12 @@ image_url:"",
 ## 业务分析
 
 ```mermaid
-
+​```mermaid
 graph LR
 add_port[新增图片接口]--查询所有商品信息-->add_show(显示选择接口)
 add_show--商品信息-->add_commit
-add_port--图片-->add_commit(增加接口)-->保存图片信息
-
+add_port--图片-->add_commit(增加接口)-->chage(是否保存成功)--成功-->0(保存图片信息)
+chage--失败-->1(返回错误信息)
+​```
 ```
 
