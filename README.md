@@ -443,7 +443,12 @@ mobile:"mobile",
 
 ### 图片表管理
 
+
+
+
+
 ```mermaid
+​```mermaid
 graph LR
 image_table[图片表管理 ModelViewSet]-->add_data((增加))-->add_port[接口分析]-->add_show(显示选择接口)
 add_show-->as_1[请求方式]-->GET
@@ -458,12 +463,14 @@ add_commit-->ad_4[返回结果]-->id,image,sku
 image_table-->change_data((修改))-->change_port(接口分析)
 image_table-->delere_data((删除))
 image_table-->show_data((展显))
+​```
 
 ```
 
 ### 增加-接口分析 
 
 ```mermaid
+​```mermaid
 graph LR
 add_port[接口分析]-->add_show(显示选择接口)
 add_show-->as_1[请求方式]-->GET
@@ -475,6 +482,7 @@ add_commit-->ad_1[请求方式]-->POST
 add_commit-->ad_2[请求参数]-->token身分证明,sku,image
 add_commit-->ad_3[请求地址]-->/meiduo_admin/skus/images/
 add_commit-->ad_4[返回结果]-->id,image,sku
+​```
 ```
 
 #### 显示选择接口
@@ -533,9 +541,11 @@ image_url:"",
 ## 业务分析
 
 ```mermaid
+​```mermaid
 graph LR
 add_port[新增图片接口]--查询所有商品信息-->add_show(显示选择接口)
 add_show--商品信息-->add_commit
 add_port--图片-->add_commit(增加接口)-->保存图片信息
+​```
 ```
 
