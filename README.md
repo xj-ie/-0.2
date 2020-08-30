@@ -1,4 +1,7 @@
+
+
 # -0.2
+
 美多商城后台
 
 
@@ -433,4 +436,106 @@ mobile:"mobile",
 |  pages   | int  |    是    |   总页数   |
 |   page   | int  |    是    |    页码    |
 | pagesize | int  |    是    |   页容量   |
+
+------
+
+
+
+### 图片表管理
+
+```mermaid
+graph LR
+image_table[图片表管理 ModelViewSet]-->add_data((增加))-->add_port[接口分析]-->add_show(显示选择接口)
+add_show-->as_1[请求方式]-->GET
+add_show-->as_2[请求参数]-->token身分证明
+add_show-->as_3[请求地址]-->/meiduo_admin/skus/simplie/
+add_show-->as_4[返回结果]-->SKU_id,SKU
+add_port-->add_commit(增加接口)
+add_commit-->ad_1[请求方式]-->POST
+add_commit-->ad_2[请求参数]-->token身分证明,sku,image
+add_commit-->ad_3[请求地址]-->/meiduo_admin/skus/images/
+add_commit-->ad_4[返回结果]-->id,image,sku
+image_table-->change_data((修改))-->change_port(接口分析)
+image_table-->delere_data((删除))
+image_table-->show_data((展显))
+
+```
+
+### 增加-接口分析 
+
+```mermaid
+graph LR
+add_port[接口分析]-->add_show(显示选择接口)
+add_show-->as_1[请求方式]-->GET
+add_show-->as_2[请求参数]-->token身分证明
+add_show-->as_3[请求地址]-->/meiduo_admin/skus/simplie/
+add_show-->as_4[返回结果]-->SKU_id,SKU
+add_port[接口分析]-->add_commit(增加接口)
+add_commit-->ad_1[请求方式]-->POST
+add_commit-->ad_2[请求参数]-->token身分证明,sku,image
+add_commit-->ad_3[请求地址]-->/meiduo_admin/skus/images/
+add_commit-->ad_4[返回结果]-->id,image,sku
+```
+
+#### 显示选择接口
+
+​	**请求方式**：GET
+
+​	**请求参数**：token
+
+| 参数  | 类型 |   携带地址   | 是否必传 |   说明   |
+| :---: | :--: | :----------: | :------: | :------: |
+| token | str  | body(请求体) |    是    | 身份验证 |
+
+​	**返回数据**： 
+
+```JSon
+[
+{sku_id:'',sku_name:''},
+{sku_id:'',sku_name:''}
+....
+]
+```
+
+| 返回参数 | 类型 | 是否必需 |    说明     |
+| :------: | :--: | :------: | :---------: |
+|    id    | int  |    是    |  sku商品id  |
+|   name   | str  |    是    | sku商品名称 |
+
+#### 增加图片数据接口
+
+​	**请求方式：**POST /meiduo_admin/skus/images/
+
+​	**请求参数：**token， id，name
+
+| 参数  | 类型 |    携带地址     | 是否必传 |   说明    |
+| :---: | :--: | :-------------: | :------: | :-------: |
+| token | str  | headres(请求行) |    是    | 身份验证  |
+|  id   | int  |  body(请求体)   |    是    | sku商品id |
+| name  | str  |  body(请求体)   |    是    | sku商品id |
+
+​	**返回数据：**JSON
+
+```JSON
+{
+id:""
+sku_id:"",
+image_url:"",
+}
+```
+
+| 返回参数  | 类型 | 是否必传 |   说明   |
+| :-------: | :--: | :------: | :------: |
+|    id     | int  |    是    |  图片id  |
+|  sku_id   | int  |    是    |  商品id  |
+| image_url | str  |    是    | 图片地址 |
+
+## 业务分析
+
+```mermaid
+graph LR
+add_port[新增图片接口]--查询所有商品信息-->add_show(显示选择接口)
+add_show--商品信息-->add_commit
+add_port--图片-->add_commit(增加接口)-->保存图片信息
+```
 
