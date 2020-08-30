@@ -342,3 +342,5 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'meiduo_main.utils.jwt_response_payload_handler',
 
 }
+
+FDFS_CONF_URL = os.path.join(BASE_DIR, 'utils/fdfs/client.conf')

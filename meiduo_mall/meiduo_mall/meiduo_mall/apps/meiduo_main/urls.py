@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
 from .view.stailstical import UserCountView,UserDayCountView, UserDayActivateCountView, UserDayOrderCountView,UserMonthCountView,GoodsDayView
-from .view import users,skuView
+from .view import users,skuView,SPUImageView
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
@@ -28,10 +28,19 @@ urlpatterns = [
     url(r'^statistical/month/$', UserMonthCountView.as_view()),
     url(r'^statistical/goods_day_views/$',GoodsDayView.as_view()),
     url(r'^User/showuser/$',users.UserView.as_view()),
-    url(r'^goods/simplie/$',skuView.SkuViewSet.as_view({"get":"simplie"}))
+    url(r'^goods/simplie/$',skuView.SkuViewSet.as_view({"get":"simplie"})),
+    url(r'^image/simplie/$',SPUImageView.ImageView.as_view({"get":"get_image"}))
 ]
 
 routes = DefaultRouter()
 routes.register("goods/specs",skuView.SkuViewSet,base_name='skuview')
-print(routes.urls)
+print("SKU",routes.urls)
 urlpatterns += routes.urls
+
+#
+# class B(object):
+#     pass
+routes_image = DefaultRouter()
+routes_image.register("image/specs",SPUImageView.ImageView,base_name='Iamge_view')
+print("IMG:",routes_image.urls)
+urlpatterns += routes_image.urls
