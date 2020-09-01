@@ -22,7 +22,8 @@ class SkuView(ModelViewSet):
     queryset = SKU.objects.all()
     pagination_class = PageUnm
     serializer_class = SkuSerializer
-    parser_classes = [IsAdminUser]
+    # parser_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser]
 
     @action(methods=['GET'],detail=False)
     def categories(self, request):
