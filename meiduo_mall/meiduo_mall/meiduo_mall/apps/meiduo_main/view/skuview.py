@@ -13,6 +13,10 @@ from goods.models import GoodsCategory
 
 from meiduo_main.verializer.skuserializer import GoodsVisitSerializer
 
+from goods.models import SPU
+
+from meiduo_main.verializer.skuserializer import SPUSpecificationSerializer
+
 
 class SkuView(ModelViewSet):
     queryset = SKU.objects.all()
@@ -25,3 +29,9 @@ class SkuView(ModelViewSet):
         category = GoodsCategory.objects.filter(subs__id=None)
         res = GoodsVisitSerializer(category,many=True)
         return Response(res.data)
+
+    def specs(self,reqest,pk):
+       spu = SPU.objects.get(id=pk)
+       data = spu.specs.all()
+       ser = SPUSpecificationSerializer(data,many=True)
+       return Response(ser.data)

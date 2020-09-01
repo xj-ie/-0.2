@@ -29,7 +29,10 @@ urlpatterns = [
     url(r'^statistical/goods_day_views/$',GoodsDayView.as_view()),
     url(r'^users/$',users.UserView.as_view()),
     url(r'^goods/simple/$',skuView.SkuViewSet.as_view({"get":"simplie"})),
-    url(r'^skus/images/$',SPUImageView.ImageView.as_view({"get":"get_image"}))
+    url(r'^skus/images/$',SPUImageView.ImageView.as_view({"get":"get_image"})),
+    url(r'^goods/(?P<pk>\d)/specs/$',skuview.SkuView.as_view({"get":"specs"})),
+
+    #WARNING basehttp 124 "GET /meiduo_admin/goods/2/specs/ HTTP/1.1" 404 14495
 
 ]
 

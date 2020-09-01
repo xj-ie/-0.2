@@ -2,6 +2,8 @@ from django.db import models
 from meiduo_mall.utils.models import BaseModel
 
 
+
+
 class GoodsCategory(BaseModel):
 
     """商品类别
