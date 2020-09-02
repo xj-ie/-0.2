@@ -10,13 +10,57 @@
 
 ​	![image-20200826085703466](image/image-20200826085703466.png)
 
-![image-20200827145707398](image/image-20200827145707398.png)
+
+
+```mermaid
+graph LR
+all_projects[美多后台]-->login((登录))-->login_portl(接口分析)
+login_portl-->login_1[请求方式]-->logins_1(POST)
+login_portl-->login_2[请求参数]-->logins_2("username,password{josn}")
+login_portl-->login_3[请求地址]-->logins_3(meiduo_adim/authorizations/)
+login_portl-->login_4[返回结果]-->logins_4(Username,token,id)
+login-->login_str(业务逻辑)
+all_projects-->linst(商品管理)-->image_table[图片表管理 ModelViewSet]-->add_data((增加))-->add_port[接口分析]-->add_show(显示选择接口)
+add_show-->as_1[请求方式]-->al1(GET)
+add_show-->as_2[请求参数]-->al2(token身分证明)
+add_show-->as_3[请求地址]-->al3(/meiduo_admin/skus/simplie/)
+add_show-->as_4[返回结果]-->al4(SKU_id,SKU)
+add_port-->add_commit(增加接口)
+add_commit-->ad_1[请求方式]-->a1(POST)
+add_commit-->ad_2[请求参数]-->a2(token身分证明,sku,image)
+add_commit-->ad_3[请求地址]-->a3(/meiduo_admin/skus/images/)
+add_commit-->ad_4[返回结果]-->a4(id,image,sku)
+image_table-->change_data((修改))-->change_port(接口分析)
+image_table-->delere_data((删除))
+image_table-->show_data((展显))-->show_port(接口分析)
+change_port-->cs_1[请求方式]-->c1(PUT)
+change_port-->cs_2[请求参数]-->c2(token身分证明,id,image)
+change_port-->cs_3[请求地址]-->c3(/meiduo_admin/skus/simplie/)
+change_port-->cs_4[返回结果]-->c4(id,name,image_url)
+show_port-->ss_1[请求方式]-->s1(GET)
+show_port-->ss_2[请求参数]-->s2(token身分证明)
+show_port-->ss_3[请求地址]-->s3(/meiduo_admin/skus/simplie/)
+show_port-->ss_4[返回结果]-->s4(count,id,lilens,page,pages,pagesize)
+```
+
+
 
 ### 1、业务说明
 
 ​	验证用户名和密码成功后，为用户签发JWT,前端将签发JWT保存下来。
 
 ### 2、后端接口设计 
+
+```mermaid
+graph LR
+login_portl(接口分析)
+login_portl-->login_1[请求方式]-->logins_1(POST)
+login_portl-->login_2[请求参数]-->logins_2("username,password{josn}")
+login_portl-->login_3[请求地址]-->logins_3(meiduo_adim/authorizations/)
+login_portl-->login_4[返回结果]-->logins_4(Username,token,id)
+```
+
+
 
 ​	**请求方式**：POST  meiduo_admin/authorizations/
 
@@ -53,9 +97,17 @@
 
 ### 1、业务说明
 
-​	通过rest_frame中的GenteAPIView视图类完成统计功能 
+​	通过rest_frame中的GenteAPIView视图类完成
+
+```
+
+```
+
+统计功能 
 
 ### 2、后端接口设计
+
+
 
 ​	**请求方式**：GET
 
@@ -455,21 +507,70 @@ mobile:"mobile",
 
 graph LR
 image_table[图片表管理 ModelViewSet]-->add_data((增加))-->add_port[接口分析]-->add_show(显示选择接口)
-add_show-->as_1[请求方式]-->GET
-add_show-->as_2[请求参数]-->token身分证明
-add_show-->as_3[请求地址]-->/meiduo_admin/skus/simplie/
-add_show-->as_4[返回结果]-->SKU_id,SKU
+add_show-->as_1[请求方式]-->al1(GET)
+add_show-->as_2[请求参数]-->al2(token身分证明)
+add_show-->as_3[请求地址]-->al3(/meiduo_admin/skus/simplie/)
+add_show-->as_4[返回结果]-->al4(SKU_id,SKU)
 add_port-->add_commit(增加接口)
-add_commit-->ad_1[请求方式]-->POST
-add_commit-->ad_2[请求参数]-->token身分证明,sku,image
-add_commit-->ad_3[请求地址]-->/meiduo_admin/skus/images/
-add_commit-->ad_4[返回结果]-->id,image,sku
+add_commit-->ad_1[请求方式]-->a1(POST)
+add_commit-->ad_2[请求参数]-->a2(token身分证明,sku,image)
+add_commit-->ad_3[请求地址]-->a3(/meiduo_admin/skus/images/)
+add_commit-->ad_4[返回结果]-->a4(id,image,sku)
 image_table-->change_data((修改))-->change_port(接口分析)
 image_table-->delere_data((删除))
-image_table-->show_data((展显))
+image_table-->show_data((展显))-->show_port(接口分析)
+change_port-->cs_1[请求方式]-->c1(PUT)
+change_port-->cs_2[请求参数]-->c2(token身分证明,id,image)
+change_port-->cs_3[请求地址]-->c3(/meiduo_admin/skus/simplie/)
+change_port-->cs_4[返回结果]-->c4(id,name,image_url)
+show_port-->ss_1[请求方式]-->s1(GET)
+show_port-->ss_2[请求参数]-->s2(token身分证明)
+show_port-->ss_3[请求地址]-->s3(/meiduo_admin/skus/simplie/)
+show_port-->ss_4[返回结果]-->s4(count,id,lilens,page,pages,pagesize)
 
 
 ```
+
+### 查询-接口分析
+
+```mermaid
+
+graph LR
+show_port(接口分析)
+show_port-->ss_1[请求方式]-->GET
+show_port-->ss_2[请求参数]-->token身分证明
+show_port-->ss_3[请求地址]-->/meiduo_admin/skus/simplie/
+show_port-->ss_4[返回结果]-->count,id,lilens,page,pages,pagesize
+
+
+
+```
+
+**请求方式**：GET  /meiduo_admin/skus/simplie/
+
+**请求参数**：token
+
+**返回参数**：JSON
+
+```
+{
+count：图片个数，
+lilens：[data]，
+page：页码，
+pages：总页数，
+pagesize：页容量，
+}
+```
+
+| 返回参数 | 类型 | 是否必需 |  说明  |
+| :------: | :--: | :------: | :----: |
+|  count   | int  |    是    |  个数  |
+|  lilens  | 数组 |    是    |  数据  |
+|   page   | int  |    是    |  页码  |
+| pagesize | int  |    是    | 页容量 |
+|  pages   | int  |    是    |  页数  |
+
+
 
 ### 增加-接口分析 
 
@@ -545,12 +646,211 @@ image_url:"",
 ## 业务分析
 
 ```mermaid
-​```mermaid
+
 graph LR
 add_port[新增图片接口]--查询所有商品信息-->add_show(显示选择接口)
 add_show--商品信息-->add_commit
 add_port--图片-->add_commit(增加接口)-->chage(是否保存成功)--成功-->0(保存图片信息)
 chage--失败-->1(返回错误信息)
-​```
+
 ```
 
+### 更新-接口分析
+
+```mermaid
+graph LR
+change_port(接口分析)
+change_port-->cs_1[请求方式]-->PUT
+change_port-->cs_2[请求参数]-->token身分证明,id,image
+change_port-->cs_3[请求地址]-->/meiduo_admin/skus/simplie/
+change_port-->cs_4[返回结果]-->id,name,image_url
+```
+
+**请求方式**：PUT  /meiduo_admin/skus/simplie/
+
+**请求参数**：token,id,image
+
+| 参数  | 类型  | 是否必传 |      携带部位       |   说明   |
+| :---: | :---: | :------: | :-----------------: | :------: |
+| token |  str  |    是    |  headers（请求头）  | 身份验证 |
+|  id   |  int  |    是    |   body（请求体）    |  商品id  |
+| image | bytes |    是    | body（请求体files） | 上传图片 |
+
+​	**返回参数**：
+
+​	{
+
+id：图片id，
+
+image_url:图片地址，
+
+sku_id:商品id，
+
+}
+
+| 返回参数 | 类型 | 是否必需 |   说明   |
+| :------: | :--: | :------: | :------: |
+|    id    | int  |    是    |  图片id  |
+|  image   | str  |    是    | 图片地址 |
+|  sku_id  | int  |    是    |  商品id  |
+
+### sku表管理
+
+```mermaid
+graph LR
+linst(商品表管理)
+
+skus(sku表管理)-->sku_add((增加))
+skus(sku表管理)-->sku_show((展示))-->skus_port(接口分析)
+skus(sku表管理)-->sku_delere((删除))
+skus(sku表管理)-->sku_svae((保存))
+
+
+skus_port-->skuscs_1[请求方式]-->GET
+skus_port-->skuscs_2[请求参数]-->token身分证明
+skus_port-->skuscs_3[请求地址]-->/meiduo_admin/skus/
+skus_port-->skuscs_4[返回结果]-->id,name,image_url
+```
+
+#### sku展示接口
+
+​	多个展示接口
+
+```mermaid
+graph LR
+skus_port(接口分析)
+skus_port-->skuscs_1[请求方式]-->GET
+skus_port-->skuscs_2[请求参数]-->token身分证明
+skus_port-->skuscs_3[请求地址]-->/meiduo_admin/skus/
+skus_port-->skuscs_4[返回结果]-->id,name,image_url
+```
+
+**请求方式**：GET  /meiduo_admin/skus/
+
+**请求参数**：token
+
+| 参数  | 类型 | 是否必传 |   说明   |
+| :---: | :--: | :------: | :------: |
+| token | str  |    是    | 身份验证 |
+
+**返回参数**：
+
+```json
+{
+        "counts": "商品SPU总数量",
+        "lists": [
+            {
+                "id": "商品SKU ID",
+                "name": "商品SKU名称",
+                "spu": "商品SPU名称",
+                "spu_id": "商品SPU ID",
+                "caption": "商品副标题",
+                "category_id": "三级分类id",
+                "category": "三级分类名称",
+                "price": "价格",
+                "cost_price": "进价",
+                "market_price": "市场价格",
+                "stock": "库存",
+                "sales": "销量",
+                "is_launched": "上下架",
+                "specs": [
+                    {
+                        "spec_id": "规格id",
+                        "option_id": "选项id"
+                    },
+                    ...
+                ]
+            },
+            ...
+          ],
+            "page": "页码",
+            "pages": "总页数",
+            "pagesize": "页容量"
+      }
+```
+
+|  返回值  | 类型 | 是否必须 |    说明    |
+| :------: | :--: | :------: | :--------: |
+|  count   | int  |    是    | SKUs商总量 |
+|  lists   | 数组 |    是    |  SKU信息   |
+|   page   | int  |    是    |    页码    |
+|  pages   | int  |    是    |   总页数   |
+| pagesize | int  |    是    |   页容量   |
+
+后面由于个人，已经略过了
+
+
+
+
+
+### 订单接口
+
+```mermaid
+graph LR
+订单接口-->展示内容-->订单展示-->show_port(接口分析)
+展示内容-->订单详情展示-->detail_port(接口分析)
+订单接口-->订单修改-->状态修改-->change_port(接口分析)
+show_port-->order_s1(请求方式)-->order_s1_get(GET)
+show_port-->order_s2(请求地址)-->order_s1_url( /meduie_main/order/)
+show_port-->order_s4(请求方式)-->order_s1_request(token)
+show_port-->order_s3(返回参数)-->order_s1_return("{count：订单个数，
+lists：[{订单对象}，{订单对象}，。。。]，
+page：页码，
+pages：总页数，
+pagesize：页容量，
+}")
+
+
+```
+
+#### 订单展示 
+
+```mermaid
+graph LR
+show_port(接口分析)
+show_port-->order_s1(请求方式)-->order_s1_get(GET)
+show_port-->order_s2(请求地址)-->order_s1_url( /meduie_main/order/)
+show_port-->order_s4(请求方式)-->order_s1_request(token)
+show_port-->order_s3(返回参数)-->order_s1_return("{count：订单个数，
+lists：[{订单对象}，{订单对象}，。。。]，
+page：页码，
+pages：总页数，
+pagesize：页容量，
+}")
+
+
+
+
+```
+
+​	**请求方式**:GET /meduie_main/order/
+
+​	**请求参数**：token
+
+| 参数  | 类型 | 是否必传 |     携带部位      |   说明   |
+| :---: | :--: | :------: | :---------------: | :------: |
+| token | str  |    是    | 请求头（headres） | 身份验证 |
+
+​	**返回结果**：JSON
+
+```json
+{
+
+count：订单个数，
+lists：[{订单对象}，{订单对象}，。。。]，
+page：页码，
+pages：总页数，
+pagesize：页容量，
+
+}
+```
+
+| 返回参数 | 类型 | 是否必需 |   说明   |
+| :------: | :--: | :------: | :------: |
+|  count   | int  |    是    | 订单个数 |
+|  lists   | list |    是    | 数据内容 |
+|  pages   | int  |    是    |  总页数  |
+|   page   | int  |    是    |   页码   |
+| pagesize | int  |    是    |  页容量  |
+
+#### 订单详细接口
