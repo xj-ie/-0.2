@@ -7,7 +7,7 @@ from goods.models import SKU
 
 from meiduo_main.utils import PageUnm
 
-from meiduo_main.verializer.SPUIamgeSerializer import SkuSerializer
+from meiduo_main.verializer.skuserializer import SkuSerializer
 
 from goods.models import GoodsCategory
 
@@ -24,6 +24,14 @@ class SkuView(ModelViewSet):
     serializer_class = SkuSerializer
     # parser_classes = [IsAdminUser]
     permission_classes = [IsAdminUser]
+    def get_queryset(self):
+        if not self.request.query_params.get('keyword'):
+            return SKU.objects.all()
+
+        else:
+            return SKU.objects.filter(username__contains=self.request.query_params.get('keyword'))
+
+
 
     @action(methods=['GET'],detail=False)
     def categories(self, request):

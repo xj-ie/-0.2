@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
+
+from meiduo_main.view.ordersView import OrdersView
 from .view.stailstical import UserCountView,UserDayCountView, UserDayActivateCountView, UserDayOrderCountView,UserMonthCountView,GoodsDayView
 from .view import users,skuView,SPUImageView,skuview
 from rest_framework.routers import DefaultRouter
@@ -54,3 +56,10 @@ route_sku = DefaultRouter()
 route_sku.register('skus',skuview.SkuView, base_name='SKUVIEW')
 print('SKU:',route_sku.urls)
 urlpatterns += route_sku.urls
+
+
+
+route_order = DefaultRouter()
+route_order.register('orders',OrdersView, base_name="ORdersView")
+print("order",route_order.urls)
+urlpatterns += route_order.urls
