@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
+
+from meiduo_main.view.ordersView import OrdersView
 from .view.stailstical import UserCountView,UserDayCountView, UserDayActivateCountView, UserDayOrderCountView,UserMonthCountView,GoodsDayView
-from .view import users,skuView
+from .view import users,skuView,SPUImageView,skuview
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
@@ -27,11 +29,37 @@ urlpatterns = [
     url(r'^statistical/day_order/$', UserDayOrderCountView.as_view()),
     url(r'^statistical/month/$', UserMonthCountView.as_view()),
     url(r'^statistical/goods_day_views/$',GoodsDayView.as_view()),
-    url(r'^User/showuser/$',users.UserView.as_view()),
-    url(r'^goods/simplie/$',skuView.SkuViewSet.as_view({"get":"simplie"}))
+    url(r'^users/$',users.UserView.as_view()),
+    url(r'^goods/simple/$',skuView.SkuViewSet.as_view({"get":"simplie"})),
+    url(r'^skus/images/$',SPUImageView.ImageView.as_view({"get":"get_image"})),
+    url(r'^goods/(?P<pk>\d)/specs/$',skuview.SkuView.as_view({"get":"specs"})),
+
+    #WARNING basehttp 124 "GET /meiduo_admin/goods/2/specs/ HTTP/1.1" 404 14495
+
 ]
 
 routes = DefaultRouter()
 routes.register("goods/specs",skuView.SkuViewSet,base_name='skuview')
-print(routes.urls)
+print("SKU",routes.urls)
 urlpatterns += routes.urls
+
+#
+# class B(object):
+#     pass
+routes_image = DefaultRouter()
+routes_image.register("skus/simple/",SPUImageView.ImageView,base_name='Iamge_view')
+print("IMG:",routes_image.urls)
+urlpatterns += routes_image.urls
+
+
+route_sku = DefaultRouter()
+route_sku.register('skus',skuview.SkuView, base_name='SKUVIEW')
+print('SKU:',route_sku.urls)
+urlpatterns += route_sku.urls
+
+
+
+route_order = DefaultRouter()
+route_order.register('orders',OrdersView, base_name="ORdersView")
+print("order",route_order.urls)
+urlpatterns += route_order.urls

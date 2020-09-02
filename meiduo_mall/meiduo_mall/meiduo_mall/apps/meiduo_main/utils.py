@@ -37,7 +37,7 @@ class PageUnm(PageNumberPagination):
         # ]))
 
         return Response({"count":self.page.paginator.count,
-                        "lines":data,
+                        "lists":data,
                         "page":self.page.number,
                         "pages":self.page.paginator.num_pages,
                         "pagesize":self.max_page_size,
