@@ -799,6 +799,16 @@ page：页码，
 pages：总页数，
 pagesize：页容量，
 }")
+detail_port-->order_detail_s1(请求方式)-->order_s2_get(GET)
+detail_port-->order_detail_s2(请求地址)-->order_s2_url("/meduie_main/(?P<pk>\d)/order/")
+detail_port-->order_detail_s4(请求方式)-->order_s2_request(token)
+detail_port-->order_detail_s3(返回参数)-->order_s2_return("{
+order：订单对象，
+sku_id:商品id，
+defaultimage：商品图片
+count：商品数量 ，
+price：商品阶格，
+}")
 
 
 ```
@@ -854,3 +864,85 @@ pagesize：页容量，
 | pagesize | int  |    是    |  页容量  |
 
 #### 订单详细接口
+
+```mermaid
+graph LR
+detail_port(接口分析)
+detail_port-->order_detail_s1(请求方式)-->order_s2_get(GET)
+detail_port-->order_detail_s2(请求地址)-->order_s2_url("/meduie_main/(?P<pk>\d)/order/")
+detail_port-->order_detail_s4(请求方式)-->order_s2_request("token，pk")
+detail_port-->order_detail_s3(返回参数)-->order_s2_return("{
+order：订单对象，
+sku_id:商品id，
+defaultimage：商品图片
+count：商品数量 ，
+price：商品价格，
+}")
+
+```
+
+**请求方式**：GET
+
+**请求参数**：pk， token
+
+| 参数  | 类型 | 是否必传 |    携带部位     |   说明   |
+| :---: | :--: | :------: | :-------------: | :------: |
+|  pk   | int  |    是    | 请求行（lines） |  订单id  |
+| token | str  |    是    | 请求头（heads） | 身份验证 |
+
+**返回结果**：JSON
+
+```
+{
+order：订单对象，
+count：商品个数，
+sku_id:商品id，
+default：商品图片，
+price：商品价格，
+}
+```
+
+| 返回参数 |   类型    | 是否必需 |   说明   |
+| :------: | :-------: | :------: | :------: |
+|  order   | <objects> |    是    | 订单对象 |
+|  count   |    int    |    是    | 商品个数 |
+|  sku_id  |    int    |    是    |  商品id  |
+|  price   |    int    |    是    | 商品价格 |
+| default  |    str    |    是    | 图片地址 |
+
+#### 订单状态修改
+
+```mermaid
+graph LR
+change_port(接口分析)
+change_port-->order_change_s1(请求方式)-->order_change_get(PUT)
+change_port-->order_change_s2(请求地址)-->order_change_url("/meiduo_admin/orders/(?P<order_id>\d+)/status/")
+change_port-->order_change_s4(请求方式)-->order_change_request("token，pk，status")
+change_port-->order_change_s3(返回参数)-->order_change_return(" {
+        order_id: 20181126102807000000004,
+        status: 1
+    }")
+```
+
+**请求方式**:PUT /meiduo_admin/orders/(?P<order_id>\d+)/status/
+
+**请求参数**：token，pk，status
+
+|  参数  | 类型 | 是否必传 |     携带部位      |   说明   |
+| :----: | :--: | :------: | :---------------: | :------: |
+| token  | str  |    是    | 请求头（headers） | 身份验证 |
+|   pk   | str  |    是    |  请求体（body）   |  订单id  |
+| status | int  |    是    |  请求体（body）   | 订单状态 |
+
+**返回参数**：JSON
+
+```json
+{order_id:订单id，
+status：订单状态}
+```
+
+| 返回参数 | 类型 | 是否必需 |   说明   |
+| :------: | :--: | :------: | :------: |
+| order_id | str  |    是    |  订单id  |
+|  status  | int  |    是    | 订单状态 |
+
