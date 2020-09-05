@@ -17,6 +17,7 @@ from django.conf.urls import url
 from rest_framework_jwt.views import obtain_jwt_token
 
 from meiduo_main.view.ordersView import OrdersView
+from meiduo_main.view.permission_groups import PermssionGroupsView
 from meiduo_main.view.permissionview import PermissionView
 from .view.stailstical import UserCountView,UserDayCountView, UserDayActivateCountView, UserDayOrderCountView,UserMonthCountView,GoodsDayView
 from .view import users,skuView,SPUImageView,skuview
@@ -34,7 +35,8 @@ urlpatterns = [
     url(r'^goods/simple/$',skuView.SkuViewSet.as_view({"get":"simplie"})),
     url(r'^skus/images/$',SPUImageView.ImageView.as_view({"get":"get_image"})),
     url(r'^goods/(?P<pk>\d)/specs/$',skuview.SkuView.as_view({"get":"specs"})),
-    url(r'^permission/content_types/$',PermissionView.as_view({"get":"content_daty"}))
+    url(r'^permission/content_types/$',PermissionView.as_view({"get":"content_daty"})),
+    url(r'^permission/simple/$',PermssionGroupsView.as_view({"get":"simple"}))
 
     #WARNING basehttp 124 "GET /meiduo_admin/goods/2/specs/ HTTP/1.1" 404 14495
 
@@ -72,3 +74,10 @@ route_permission = DefaultRouter()
 route_permission.register('permission/perms',PermissionView,base_name="permissionview")
 print('permssion:',route_permission.urls)
 urlpatterns += route_permission.urls
+
+
+
+route_groups = DefaultRouter()
+route_groups.register('permission/groups',PermssionGroupsView,base_name="permissionview")
+print('groups:',route_groups.urls)
+urlpatterns += route_groups.urls
