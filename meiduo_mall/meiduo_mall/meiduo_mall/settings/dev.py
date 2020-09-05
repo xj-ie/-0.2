@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'payments.apps.PaymentsConfig',
     'meiduo_main.apps.MeiduoMainConfig',
     'corsheaders',
+    'rest_framework',
 
     # 'haystack',
     'django_crontab',  # 定时任务
