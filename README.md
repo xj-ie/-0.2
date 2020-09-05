@@ -41,6 +41,35 @@ show_port-->ss_1[请求方式]-->s1(GET)
 show_port-->ss_2[请求参数]-->s2(token身分证明)
 show_port-->ss_3[请求地址]-->s3(/meiduo_admin/skus/simplie/)
 show_port-->ss_4[返回结果]-->s4(count,id,lilens,page,pages,pagesize)
+all_projects-->系统管理-->权限管理-->showpermission(展示)-->all_permission(展示多个)-->all_permission_port(接口分析)
+all_permission-->all_permssion_ogtl(业务分析)
+showpermission-->aoy_permission(展示单一)
+权限管理-->add_permission(新增)-->add_permission_ogtl(业务分析)
+add_permission-->add_permission_port(接口分析)
+all_permission_port-->permission_change_s1(请求方式)-->permission_change_get(GET)
+all_permission_port-->_permission_change_s2(请求地址)-->permission_change_url("/meiduo_admin/permission/perms/")
+all_permission_port-->permission_change_s4(请求方式)-->permission_change_request("token")
+all_permission_port-->permission_change_s3(返回参数)-->permission_change_return(" {
+count：权限个数，
+lists：[{id:权限id,name:权限名,condename:权限验证名,content_type:内容类型},....]
+page：页码，
+pages：页数，
+pagesize：页容量，
+}")
+all_permssion_ogtl-->permssion_ogtl1("1、查询数据集")
+all_permssion_ogtl-->permssion_ogtl2("2、定义序列化器")
+all_permssion_ogtl-->permssion_ogtl3("3、定义分页器")
+all_permssion_ogtl-->permssion_ogtl4("4、重写分页器返回数据")
+all_permssion_ogtl-->permssion_ogtl5("5、返回数据")
+add_permission_port-->permission_change_add1(请求方式)-->permission_change_get1(GET)
+add_permission_port-->_permission_change_add2(请求地址)-->permission_change_url1("/meiduo_admin/permission/content_types/")
+add_permission_port-->permission_change_add4(请求方式)-->permission_change_request1("token")
+add_permission_port-->permission_change_add3(返回参数)-->permission_change_return1(" [{id：权限类型id，
+name：权限类型名},...]")
+add_permission_ogtl-->writer1("1、获取数据集数据")
+add_permission_ogtl-->writer2("2、定义序列化器")
+add_permission_ogtl-->writer3("3、使用序列器")
+add_permission_ogtl-->writer4("4、返回数据")
 ```
 
 
@@ -945,4 +974,133 @@ status：订单状态}
 | :------: | :--: | :------: | :------: |
 | order_id | str  |    是    |  订单id  |
 |  status  | int  |    是    | 订单状态 |
+
+### 权限管理
+
+```mermaid
+graph LR
+权限管理-->showpermission(展示)-->all_permission(展示多个)-->all_permission_port(接口分析)
+all_permission-->all_permssion_ogtl(业务分析)
+showpermission-->aoy_permission(展示单一)
+权限管理-->add_permission(新增)-->add_permission_ogtl(业务分析)
+add_permission-->add_permission_port(接口分析)
+all_permission_port-->permission_change_s1(请求方式)-->permission_change_get(GET)
+all_permission_port-->_permission_change_s2(请求地址)-->permission_change_url("/meiduo_admin/permission/perms/")
+all_permission_port-->permission_change_s4(请求方式)-->permission_change_request("token")
+all_permission_port-->permission_change_s3(返回参数)-->permission_change_return(" {
+count：权限个数，
+lists：[{id:权限id,name:权限名,condename:权限验证名,content_type:内容类型},....]
+page：页码，
+pages：页数，
+pagesize：页容量，
+}")
+all_permssion_ogtl-->permssion_ogtl1("1、查询数据集")
+all_permssion_ogtl-->permssion_ogtl2("2、定义序列化器")
+all_permssion_ogtl-->permssion_ogtl3("3、定义分页器")
+all_permssion_ogtl-->permssion_ogtl4("4、重写分页器返回数据")
+all_permssion_ogtl-->permssion_ogtl5("5、返回数据")
+add_permission_port-->permission_change_add1(请求方式)-->permission_change_get1(GET)
+add_permission_port-->_permission_change_add2(请求地址)-->permission_change_url1("/meiduo_admin/permission/content_types/")
+add_permission_port-->permission_change_add4(请求方式)-->permission_change_request1("token")
+add_permission_port-->permission_change_add3(返回参数)-->permission_change_return1(" [{id：权限类型id，
+name：权限类型名},...]")
+add_permission_ogtl-->writer1("1、获取数据集数据")
+add_permission_ogtl-->writer2("2、定义序列化器")
+add_permission_ogtl-->writer3("3、使用序列器")
+add_permission_ogtl-->writer4("4、返回数据")
+```
+
+#### 权限展示
+
+```mermaid
+graph LR
+all_permission(展示多个)-->all_permission_port(接口分析)
+all_permission-->all_permssion_ogtl(业务分析)
+all_permission_port-->permission_change_s1(请求方式)-->permission_change_get(GET)
+all_permission_port-->_permission_change_s2(请求地址)-->permission_change_url("/meiduo_admin/permission/perms/")
+all_permission_port-->permission_change_s4(请求方式)-->permission_change_request("token")
+all_permission_port-->permission_change_s3(返回参数)-->permission_change_return(" {
+count：权限个数，
+lists：[{id:权限id,name:权限名,condename:权限验证名,content_type:内容类型},....]
+page：页码，
+pages：页数，
+pagesize：页容量，
+}")
+all_permssion_ogtl-->permssion_ogtl1("1、查询数据集")
+all_permssion_ogtl-->permssion_ogtl2("2、定义序列化器")
+all_permssion_ogtl-->permssion_ogtl3("3、定义分页器")
+all_permssion_ogtl-->permssion_ogtl4("4、重写分页器返回数据")
+all_permssion_ogtl-->permssion_ogtl5("5、返回数据")
+```
+
+**请求方式**：GET /meiduo_admin/permission/perms/
+
+**请求参数**：token
+
+| 参数  | 类型 | 是否必传 |     携带部位      |   说明   |
+| :---: | :--: | :------: | :---------------: | :------: |
+| token | str  |    是    | 请求头（headers） | 身份验证 |
+
+**返回参数**：JSON
+
+```
+{
+count：权限个数，
+lists：[{id:权限id,name:权限名,condename:权限验证名,content_type:内容类型},....]
+page：页码，
+pages：页数，
+pagesize：页容量，
+}
+
+```
+
+| 返回参数 | 类型 | 是否必需 |   说明   |
+| :------: | :--: | :------: | :------: |
+|  count   | int  |    是    | 权限个数 |
+|  lists   | list |    是    | 权限内容 |
+|   page   | int  |    是    |   页码   |
+|  pages   | int  |    是    |   页数   |
+| pagesize | int  |    是    |  总页数  |
+
+**lists**：
+
+|   返回参数   | 类型 | 是否必需 |    说明    |
+| :----------: | :--: | :------: | :--------: |
+|      id      | int  |    是    |   权限id   |
+|     name     | str  |    是    |   权限名   |
+|  condename   | str  |    是    | 权限验证名 |
+| content_type | str  |    是    |  内容类型  |
+
+#### 展示单一
+
+```mermaid
+graph LR
+add_permission(新增)-->add_permission_ogtl(业务分析)
+add_permission-->add_permission_port(接口分析)
+add_permission_port-->permission_change_add1(请求方式)-->permission_change_get1(GET)
+add_permission_port-->_permission_change_add2(请求地址)-->permission_change_url1("/meiduo_admin/permission/content_types/")
+add_permission_port-->permission_change_add4(请求方式)-->permission_change_request1("token")
+add_permission_port-->permission_change_add3(返回参数)-->permission_change_return1(" [{id：权限类型id，
+name：权限类型名},...]")
+add_permission_ogtl-->writer1("1、获取数据集数据")
+add_permission_ogtl-->writer2("2、定义序列化器")
+add_permission_ogtl-->writer3("3、使用序列器")
+add_permission_ogtl-->writer4("4、返回数据")
+```
+
+**请求方式**： GET `/meiduo_admin/permission/perms/(?P<pk>\d+)/`
+
+**请求参数**：token
+
+**返回参数**：
+
+```
+[{id：权限类型id，
+name：权限类型名},...]
+```
+
+| 返回参数 | 类型 | 是否必需 | 说明       |
+| -------- | ---- | -------- | ---------- |
+| id       | int  | 是       | 权限类型id |
+| name     | str  | 是       | 权限类型名 |
 
